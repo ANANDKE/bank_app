@@ -1,0 +1,106 @@
+                                ANGULAR
+                            ---------------
+1) Module - to  import 3rd party modules(root module)
+2)Component - to create HTML, CSS and ts file
+
+Basic commands
+
+
+1) ng new project_name - to create new projrct
+2)ng g c component_name - to create new component
+3)ng serve --open - to run Angular file
+
+Basic concepts
+
+1)Data Binding
+
+  Share data between components
+
+    ts -----> component   // data sharing is done b/w these two
+    html ---> view
+
+       a)One way data binding (1 direction)
+
+            ts -> html or html -> ts
+
+             a.1)Component to View
+             
+                  i)String inerpolation (1 direction) - {{expression}}
+
+                 ii)Property binding - [attribute name] = "property"
+
+            a.2)View to Component (html -> ts)
+               
+                 i)Event binding (1 direction) - (event_name)="function_name()";
+                 ii)Event binding using $ event -  (event_name)="function_name($event)"
+                 iii)Event binding using template referencing variable - #variable_name
+    
+        b)Two way data binding (2 direction) - ts ->html,html ->ts
+
+            i)ngModel - formsModule in app.module
+              - [(ngModel)]="property_name"
+
+2)Angular routing
+
+  To set path for a component
+  {
+     path:"value",component_name:class_name
+  }
+
+  eg: login
+
+  {
+     path:"",component:LoginComponent
+  }
+
+
+3)Dependency Injection
+  -To share data b/w two depended classes
+
+  eg:Router class - navigateByurl is used to navigate the component
+
+4)Amgular Services
+  
+   To hold redundent data
+
+     ng g s service_name
+
+5) Angular Directives
+
+    To manipulate DOM
+
+     a)Compent Directives(array)
+
+     b)Structural Directives(table)
+        i) *ngFor
+
+        ii) ngIF
+
+6) Angular forms
+    a)Template Driven Forms(first design html page and cannot do validation)
+
+    b)Model Driven Forms(First design model in its file, Easy validation methods)   
+         -Advanced validation
+         1)Reactive Forms
+           form group,array,control
+           We can directly add validation via importing Reactive Form Module 
+
+7) Local storage
+     
+     -setItem - to store data
+     -getItem - to retrieve data
+     -removeItem - to remove data
+
+8) Parent child communication
+  
+    parent -> child @Input()
+    child -> parent @Output()
+
+  eg:
+     dashboard -> parent
+     delete -> child
+
+9) Angular pipes
+
+      {{ value_expression | date [ : format [ : timezone [ : locale ] ] ] }}
+        

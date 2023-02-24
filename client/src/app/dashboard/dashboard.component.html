@@ -1,0 +1,80 @@
+<button class="btn btn-warning " style="float:right" (click)="logout()">Logout</button>
+<button class="btn btn-danger " style="float:right" (click)="delete()">Delete</button>
+
+<div class="parent">
+    <div>
+        <h1>Welcome {{user}}</h1>
+        <h4>System Date and Time:{{sdate | date:'short'}}</h4>
+    <a routerLink="/transaction">View Transaction History</a>
+    </div>
+
+    <!-- ------child component----- -->
+<app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)"></app-delete>
+<!-- (onCancel) - userdefined event -->
+
+    
+    <div class="child" [ngClass]="acno? 'style1':''">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="https://th.bing.com/th/id/OIP.L7hr6rTsoyMhHJhobik1vAHaFG?w=247&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+            </div>
+            <div class="text-center mt-4 name">
+                Deposit
+            </div>
+            <form [formGroup]="depositForm" class="p-3 mt-3">
+                
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="acno" type="text" name="Account number" id="depo_acno" placeholder="Account number">
+                </div>
+                <div *ngIf="this.depositForm.get('acno')?.errors && this.depositForm.get('acno')?.touched" style="color: red;">Invalid account no !</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="pswd" type="password" name="password" id="depo_pswd" placeholder="Password">
+                </div>
+                <div *ngIf="this.depositForm.get('pswd')?.errors && this.depositForm.get('pswd')?.touched" style="color: red;">Invalid password !</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="amount" type="text" name="userName" id="depo_amount" placeholder="Amount">
+                </div>
+                <div *ngIf="this.depositForm.get('amount')?.errors && this.depositForm.get('amount')?.touched" style="color: red;">Invalid Data entry !</div>
+                <button class="btn mt-3" (click)="deposit()" type="button">Deposit</button>
+            </form>
+            <div class="text-center fs-6">
+                <!-- <a href="#">Forget password?</a> or -->
+                    <!-- <a routerLink="">Sign in</a>  -->
+            </div>
+        </div>
+        
+    </div>
+    <div class="child" [ngClass]="acno? 'style1':''">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="https://th.bing.com/th/id/OIP.L7hr6rTsoyMhHJhobik1vAHaFG?w=247&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+            </div>
+            <div class="text-center mt-4 name">
+                Withdraw
+            </div>
+            <form [formGroup]="withdrawForm" class="p-3 mt-3">
+                
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="acno1" type="text" name="Account number" id="with_acno" placeholder="Account number">
+                </div>
+                <div *ngIf="this.withdrawForm.get('acno1')?.errors && this.withdrawForm.get('acno1')?.touched" style="color: red;">Invalid account no !</div>
+
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="pswd1" type="password" name="password" id="with_pswd" placeholder="Password">
+                </div>
+                <div *ngIf="this.withdrawForm.get('pswd1')?.errors && this.withdrawForm.get('pswd1')?.touched" style="color: red;">Invalid Password !</div>
+
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="amount1" type="text" name="userName" id="with_amount" placeholder="Amount">
+                </div>
+                <div *ngIf="this.withdrawForm.get('amount1')?.errors && this.withdrawForm.get('amount1')?.touched" style="color: red;">Invalid Data  !</div>
+
+                <button class="btn mt-3" (click)="withdraw()" type="button">Withdraw</button>
+            </form>
+            <div class="text-center fs-6">
+                <!-- <a href="#">Forget password?</a> or -->
+                    <!-- <a routerLink="">Sign in</a>  -->
+            </div>
+        </div>
+    </div>
+</div>
